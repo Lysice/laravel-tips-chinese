@@ -9,6 +9,11 @@ Hey, like these tips? Also check out my premium [Laravel courses](https://larave
 
 __Update 24 October 2021__: Currently there are __193 tips__ divided into 14 sections.
 
+---
+Also If you need a chinese version:
+[Chinese](https://github.com/Lysice/laravel-tips-chinese/blob/master/README-zh.md)
+---
+
 ## Table of Contents
 
 - [DB Models and Eloquent](#db-models-and-eloquent) (48 tips)
