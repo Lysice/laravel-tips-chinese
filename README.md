@@ -6,6 +6,10 @@ An idea by [PovilasKorop](https://github.com/PovilasKorop) and [MarceauKa](https
 Hey, like these tips? Also check out my premium [Laravel courses](https://laraveldaily.teachable.com/)
 
 ---
+Chinese version of the document:[中文文档](https://github.com/Lysice/laravel-tips-chinese/blob/master/README-zh.md)
+
+---
+
 
 __Update 24 October 2021__: Currently there are __193 tips__ divided into 14 sections.
 
