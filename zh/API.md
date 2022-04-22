@@ -5,6 +5,8 @@
 1. [API 返回一切正常](#API-返回一切正常)
 2. [去掉额外的内部数据包装](#去掉额外的内部数据包装)
 3. [API resource中避免N+1查询](#避免N+1查询)
+4. [从Authorizationheader中获取BearerToken](#从Authorizationheader中获取BearerToken)
+5. [排序API结果](#排序API结果)
 
 
 由 [@phillipmwaniki](https://twitter.com/phillipmwaniki/status/1445230637544321029)提供
@@ -78,3 +80,42 @@ $token = $request->bearerToken();
 ```
 
 由 [@iamharis010](https://twitter.com/iamharis010/status/1488413755826327553)提供
+
+### 排序APi结果
+
+单行API排序 使用方向控制
+
+```php
+// Handles /dogs?sort=name and /dogs?sort=-name
+Route::get('dogs', function (Request $request) {
+    // Get the sort query parameter (or fall back to default sort "name")
+    $sortColumn = $request->input('sort', 'name');
+    // Set the sort direction based on whether the key starts with -
+    // using Laravel's Str::startsWith() helper function
+    $sortDirection = Str::startsWith($sortColumn, '-') ? 'desc' : 'asc';
+    $sortColumn = ltrim($sortColumn, '-');
+    return Dog::orderBy($sortColumn, $sortDirection)
+        ->paginate(20);
+});
+```
+
+我们可以为多行实现同样的效果 如?sort=name,-weight
+
+```php
+// Handles ?sort=name,-weight
+Route::get('dogs', function (Request $request) {
+    // Grab the query parameter and turn it into an array exploded by ,
+    $sorts = explode(',', $request->input('sort', ''));
+    // Create a query
+    $query = Dog::query();
+    // Add the sorts one by one
+    foreach ($sorts as $sortColumn) {
+        $sortDirection = Str::startsWith($sortColumn, '-') ? 'desc' : 'asc';
+        $sortColumn = ltrim($sortColumn, '-');
+        $query->orderBy($sortColumn, $sortDirection);
+    }
+    // Return
+    return $query->paginate(20);
+});
+```
+

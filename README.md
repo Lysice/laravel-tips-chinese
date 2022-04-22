@@ -23,6 +23,6 @@ __Update 9 **February**  2022__: Currently there are __259 tips__ divided into 1
 - [Artisan](./en/Artisan.md) (5 提示)
 - [Factories](./en/Factories.md) (6 提示)
 - [Log and debug](./en/Log_and_Debug.md) (5 提示)
-- [API](./en/Api.md) (4 提示)
+- [API](./en/Api.md) (5 提示)
 - [Other](./en/Other.md) (50 提示)
 
